@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import classnames from 'classnames';
 
 // Task component - represents a single todo item
-export default class Task extends Component {
+export  class Application extends Component {
 
   deleteThisApplication() {
     Meteor.call('applications.remove', this.props.application._id);
@@ -29,7 +29,7 @@ export default class Task extends Component {
   }
 }
 
-Task.propTypes = {
+Application.propTypes = {
   // This component gets the application to display through a React prop.
   // We can use propTypes to indicate it is required
   application: PropTypes.object.isRequired,
