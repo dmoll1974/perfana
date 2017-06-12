@@ -15,6 +15,11 @@ if (Meteor.isServer) {
       ],
     });
   });
+  Meteor.publish('testRunApplication', function applicationsPublication(name) {
+    return Applications.find({
+      name: name
+    });
+  });
 }
 
 Meteor.methods({
@@ -22,7 +27,10 @@ Meteor.methods({
       check(this.userId, String);
       check(applicationAttributes, {
           name: String,
-          description: String
+          description: String,
+          grafanaHost: String,
+          grafanaOrgId: String,
+          grafanaApiKey: String
       });
 
     // Make sure the user is logged in before inserting a task

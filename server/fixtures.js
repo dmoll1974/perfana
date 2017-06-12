@@ -12,9 +12,22 @@ if (Applications.find().count() === 0) {
     let daniel = Meteor.users.findOne(danielId);
 
     let ApplicationId = Applications.insert({
-        name: 'Foo',
+        name: 'TELEGRAAF',
         description: 'Fixture application',
         owner: daniel._id,
-        created: now
+        created: now,
+        dashboards: [
+            {
+              name: 'gatling2',
+              variables: [
+                  { name: "simulation", value: 'telegraaf'}
+              ]
+            },
+            {
+              name: 'gatling',
+              variables: [
+              ]
+            },
+        ]
     });
 }

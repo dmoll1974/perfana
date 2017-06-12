@@ -62,6 +62,8 @@ Meteor.methods({
           rampUp: Number,
           testRunId: String,
           running: Boolean,
+          buildResultsUrl: String,
+          productRelease: String,
       });
 
 
@@ -80,6 +82,8 @@ Meteor.methods({
               duration: testRun.duration,
               rampUp: testRun.rampUp,
               running: testRun.running,
+              buildResultsUrl: testRun.buildResultsUrl,
+              productRelease: testRun.productRelease,
               end: new Date()
           }
       });

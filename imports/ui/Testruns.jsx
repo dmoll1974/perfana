@@ -32,11 +32,13 @@ export class TestRunsList extends Component {
     }
 
      renderTestRuns() {
-        // let testRuns = this.props.testRuns;
-        // if (this.state.hideCompleted) {
+
+
+         // if (this.state.hideCompleted) {
         //   filteredTasks = filteredTasks.filter(task => !task.checked);
         // }
         return this.props.testRuns.map((testRun) => {
+
 
             return (
                 <TestRun
@@ -66,11 +68,11 @@ export class TestRunsList extends Component {
                   <th>Test run ID</th>
                   <th>Start</th>
                   <th>End</th>
-                  <th></th>
+                  <th>Dashboards</th>
                 </tr>
               </thead>
               <tbody>
-                {this.renderRunningTestRuns()}
+                {this.renderTestRuns()}
               </tbody>
             </table>
         </div>
@@ -83,7 +85,7 @@ export class TestRunsList extends Component {
 
 TestRunsList.propTypes = {
     testRuns: PropTypes.array.isRequired,
-    // runningtTestRuns: PropTypes.array,
+    runningtTestRuns: PropTypes.array,
 };
 
 export default createContainer(() => {
@@ -91,7 +93,7 @@ export default createContainer(() => {
   Meteor.subscribe('runningTestRuns');
 
   return {
-      testRuns: TestRuns.find({}/*, { sort: { end: -1 } }*/).fetch(),
+      testRuns: TestRuns.find({}, { sort: { end: -1 } }).fetch(),
       runningtTestRuns: TestRuns.find({
           $and: [
               // { $where: function () { return Date.now() - new Date(this.end) < (30 * 1000)  }  }, //only show as running test when end timestamp is not older than 30 secs
